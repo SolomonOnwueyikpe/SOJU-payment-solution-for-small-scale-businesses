@@ -1,0 +1,20 @@
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    form = RegistrationForm()
+    
+    if form.validate_on_submit():
+        # Process form data here
+        username = form.username.data
+        email = form.email.data
+        bank_name = form.bank_name.data
+        cvv = form.cvv.data
+        expiry_date = form.expiry_date.data
+        password = form.password.data
+        card_number = form.card_number.data
+        
+        # Perform necessary operations (e.g., saving data to database)
+        
+        flash('Registration successful!')
+        return redirect('/success')
+    
+    return render_template('register.html', form=form)

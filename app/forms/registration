@@ -1,0 +1,8 @@
+#class RegistrationForm(FlaskForm):
+    username = StringField('Username', validators=[DataRequired(), Length(min=4, max=25)])
+    email = StringField('Email', validators=[DataRequired(), Email()])
+    bank_name = StringField('Bank Name', validators=[DataRequired()])
+    cvv = StringField('CVV', validators=[DataRequired(), Length(min=3, max=4)])
+    expiry_date = DateField('Date of Expiry', validators=[DataRequired()], format='%Y-%m-%d')
+    password = PasswordField('Password', validators=[DataRequired()])
+    card_number = StringField('Card Number', validators=[DataRequired(), Regexp(r'^[0-9]{16}$', message='Card number must be 16 digits')])
